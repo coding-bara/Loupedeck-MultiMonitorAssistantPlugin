@@ -1,0 +1,28 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiMonitorAssistantPlugin", "MultiMonitorAssistantPlugin\MultiMonitorAssistantPlugin.csproj", "{C27F458D-5675-418D-B586-AB9BA4B2DDC8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Debug with Logging|Any CPU = Debug with Logging|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C27F458D-5675-418D-B586-AB9BA4B2DDC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C27F458D-5675-418D-B586-AB9BA4B2DDC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C27F458D-5675-418D-B586-AB9BA4B2DDC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C27F458D-5675-418D-B586-AB9BA4B2DDC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C27F458D-5675-418D-B586-AB9BA4B2DDC8}.Debug with Logging|Any CPU.ActiveCfg = Debug with Logging|Any CPU
+		{C27F458D-5675-418D-B586-AB9BA4B2DDC8}.Debug with Logging|Any CPU.Build.0 = Debug with Logging|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {03679F1A-1138-4C4C-A16E-C52A2CBB5600}
+	EndGlobalSection
+EndGlobal
