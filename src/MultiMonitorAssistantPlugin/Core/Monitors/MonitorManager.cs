@@ -40,7 +40,7 @@
 
         Thread.Sleep(1000);
       } catch (Exception e) {
-        Logger.Error(e, "Something went wrong!");
+        Logger.Error(e, $"'ThreadedSleep' failed with message: '{e.Message}' and stacktrace: '{e.StackTrace}'.");
       }
     };
   }

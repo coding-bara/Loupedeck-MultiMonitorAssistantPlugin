@@ -71,7 +71,7 @@
         ActivationProgress?.Invoke(layout.ID, 100);
         Thread.Sleep(250);
       } catch (Exception e) {
-        Logger.Error(e, "Something went wrong!");
+        Logger.Error(e, $"'ThreadedActivation' failed with message: '{e.Message}' and stacktrace: '{e.StackTrace}'.");
       } finally {
         ActivationProgress?.Invoke(layout.ID, -1);
       }
