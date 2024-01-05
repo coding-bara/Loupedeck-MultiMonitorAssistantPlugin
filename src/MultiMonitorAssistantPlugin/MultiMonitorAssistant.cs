@@ -6,7 +6,6 @@ namespace Loupedeck.MultiMonitorAssistantPlugin {
     public override Boolean UsesApplicationApiOnly => true;
     public override Boolean HasNoApplication => true;
 
-    public static String PluginPath;
     public static String ResourcesPath;
 
     public static State State;
@@ -21,15 +20,16 @@ namespace Loupedeck.MultiMonitorAssistantPlugin {
       Logger.Init(Log);
       Resources.Init(Assembly);
 
-      ResourcesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), nameof(Loupedeck), "Plugins", nameof(MultiMonitorAssistant), "win", "Resources");
-      PluginPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".loupedeck", nameof(MultiMonitorAssistant));
+      var resourcesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), nameof(Loupedeck), "Plugins", nameof(MultiMonitorAssistant), "win", "Resources");
+      var pluginPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".loupedeck", nameof(MultiMonitorAssistant));
 
-      if (!Directory.Exists(PluginPath))
-        Directory.CreateDirectory(PluginPath);
+      if (!Directory.Exists(pluginPath))
+        Directory.CreateDirectory(pluginPath);
 
-      var config = ConfigLoader.Load();
+      var config = new ConfigLoader(pluginPath, resourcesPath).Load();
       var api = new ToolAPI(config.ExePath);
 
+      ResourcesPath = resourcesPath;
       State = new State();
 
       MonitorsAvailable = new MonitorsAvailable(config);

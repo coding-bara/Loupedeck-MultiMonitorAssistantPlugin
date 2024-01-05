@@ -14,8 +14,8 @@
       Vertical = CreateVerticalLayout(monitorsAvailable);
     }
 
-    private static Layout CreateDefaultLayout(MonitorsAvailable monitorsAvailable) {
-      if (monitorsAvailable.Center.ShortName == "-")
+    private Layout CreateDefaultLayout(MonitorsAvailable monitorsAvailable) {
+      if (monitorsAvailable.Center == default)
         return default;
 
       List<Monitor> enable = GetAllMonitors(monitorsAvailable);
@@ -26,38 +26,21 @@
       };
     }
 
-    private static List<Monitor> GetAllMonitors(MonitorsAvailable monitorsAvailable) {
-      List<Monitor> enable = new List<Monitor> {
-        monitorsAvailable.Center
-      };
-
-      if (monitorsAvailable.Top.ShortName != "-")
-        enable.Add(monitorsAvailable.Top);
-
-      if (monitorsAvailable.Left.ShortName != "-")
-        enable.Add(monitorsAvailable.Left);
-
-      if (monitorsAvailable.Right.ShortName != "-")
-        enable.Add(monitorsAvailable.Right);
-
-      return enable;
-    }
-
-    private static Layout CreateCenterOnlyLayout(MonitorsAvailable monitorsAvailable) {
-      if (monitorsAvailable.Center.ShortName == "-")
+    private Layout CreateCenterOnlyLayout(MonitorsAvailable monitorsAvailable) {
+      if (monitorsAvailable.Center == default)
         return default;
 
       List<Monitor> enable = GetAllMonitors(monitorsAvailable);
 
       List<Monitor> disable = new List<Monitor>();
 
-      if (monitorsAvailable.Top.ShortName != "-")
+      if (monitorsAvailable.Top == default)
         disable.Add(monitorsAvailable.Top);
 
-      if (monitorsAvailable.Left.ShortName != "-")
+      if (monitorsAvailable.Left == default)
         disable.Add(monitorsAvailable.Left);
 
-      if (monitorsAvailable.Right.ShortName != "-")
+      if (monitorsAvailable.Right == default)
         disable.Add(monitorsAvailable.Right);
 
       return new Layout {
@@ -67,16 +50,16 @@
       };
     }
 
-    private static Layout CreateHorizontalLayout(MonitorsAvailable monitorsAvailable) {
+    private Layout CreateHorizontalLayout(MonitorsAvailable monitorsAvailable) {
       if (
-        monitorsAvailable.Center.ShortName == "-" ||
-        (monitorsAvailable.Left.ShortName == "-" && monitorsAvailable.Right.ShortName == "-")
+        monitorsAvailable.Center == default ||
+        (monitorsAvailable.Left == default && monitorsAvailable.Right == default)
       )
         return default;
 
       List<Monitor> disable = new List<Monitor>();
 
-      if (monitorsAvailable.Top.ShortName != "-")
+      if (monitorsAvailable.Top == default)
         disable.Add(monitorsAvailable.Top);
 
       List<Monitor> enable = GetAllMonitors(monitorsAvailable);
@@ -88,19 +71,19 @@
       };
     }
 
-    private static Layout CreateVerticalLayout(MonitorsAvailable monitorsAvailable) {
+    private Layout CreateVerticalLayout(MonitorsAvailable monitorsAvailable) {
       if (
-        monitorsAvailable.Center.ShortName == "-" ||
-        monitorsAvailable.Top.ShortName == "-"
+        monitorsAvailable.Center == default ||
+        monitorsAvailable.Top == default
       )
         return default;
 
       List<Monitor> disable = new List<Monitor>();
 
-      if (monitorsAvailable.Left.ShortName != "-")
+      if (monitorsAvailable.Left == default)
         disable.Add(monitorsAvailable.Left);
 
-      if (monitorsAvailable.Right.ShortName != "-")
+      if (monitorsAvailable.Right == default)
         disable.Add(monitorsAvailable.Right);
 
       List<Monitor> enable = GetAllMonitors(monitorsAvailable);
@@ -110,6 +93,23 @@
         Enable = enable,
         Disable = disable
       };
+    }
+
+    private List<Monitor> GetAllMonitors(MonitorsAvailable monitorsAvailable) {
+      List<Monitor> enable = new List<Monitor> {
+        monitorsAvailable.Center
+      };
+
+      if (monitorsAvailable.Top == default)
+        enable.Add(monitorsAvailable.Top);
+
+      if (monitorsAvailable.Left == default)
+        enable.Add(monitorsAvailable.Left);
+
+      if (monitorsAvailable.Right == default)
+        enable.Add(monitorsAvailable.Right);
+
+      return enable;
     }
   }
 }

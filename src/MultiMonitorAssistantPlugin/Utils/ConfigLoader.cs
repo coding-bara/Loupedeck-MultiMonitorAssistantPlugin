@@ -3,15 +3,21 @@
   using System.IO;
 
   public class ConfigLoader {
-    public static Config Load() {
-      var configFilePath = Path.Combine(MultiMonitorAssistant.PluginPath, "config.json");
+    private readonly String _configPath;
+    private readonly String _resourcesPath;
 
-      return File.Exists(configFilePath)
-        ? UseExistingConfig(configFilePath)
-        : UseDefaultConfig(configFilePath);
+    public ConfigLoader(String pluginPath, String resourcesPath) {
+      _configPath = Path.Combine(pluginPath, "config.json");
+      _resourcesPath = resourcesPath;
     }
 
-    private static Config UseDefaultConfig(String configFilePath) {
+    public Config Load() {
+      return File.Exists(_configPath)
+        ? UseExistingConfig(_configPath)
+        : UseDefaultConfig(_configPath);
+    }
+
+    private Config UseDefaultConfig(String configPath) {
       var defaultConfig = new Config {
         Monitors = new MonitorsConfig {
           Top = new MonitorConfig {
@@ -36,7 +42,7 @@
           }
         }
       };
-      JsonHelpers.SerializeAnyObjectToFile(defaultConfig, configFilePath);
+      JsonHelpers.SerializeAnyObjectToFile(defaultConfig, configPath);
 
       EnrichConfigWithDefaults(defaultConfig);
 
@@ -47,8 +53,8 @@
       return defaultConfig;
     }
 
-    private static Config UseExistingConfig(String configFilePath) {
-      var existingConfig = JsonHelpers.DeserializeAnyObjectFromFile<Config>(configFilePath);
+    private Config UseExistingConfig(String configPath) {
+      var existingConfig = JsonHelpers.DeserializeAnyObjectFromFile<Config>(configPath);
 
       EnrichConfigWithDefaults(existingConfig);
 
@@ -59,9 +65,9 @@
       return existingConfig;
     }
 
-    private static void EnrichConfigWithDefaults(Config config) {
+    private void EnrichConfigWithDefaults(Config config) {
       if (string.IsNullOrWhiteSpace(config.ExePath))
-        config.ExePath = Path.Combine(MultiMonitorAssistant.ResourcesPath, "MultiMonitorTool", "MultiMonitorTool.exe");
+        config.ExePath = Path.Combine(_resourcesPath, "MultiMonitorTool", "MultiMonitorTool.exe");
     }
   }
 }

@@ -1,39 +1,33 @@
 ﻿namespace Loupedeck.MultiMonitorAssistantPlugin {
+  using System;
+
   public class MonitorsAvailable {
-    public readonly Monitor Top;
+    public readonly Monitor Center;
     public readonly Monitor Left;
     public readonly Monitor Right;
-    public readonly Monitor Center;
+    public readonly Monitor Top;
 
     public MonitorsAvailable(Config config) {
-      Top = config.Monitors.Top.ShortName != "-"
-        ? new Monitor {
-          ShortName = config.Monitors.Top.ShortName,
-          Index = config.Monitors.Top.Index,
-          Config = config.Monitors.Top.Config
-        }
+      Center = IsValid(config.Monitors.Center)
+        ? CreateMonitor(config.Monitors.Center)
         : default;
-      Left = config.Monitors.Left.ShortName != "-"
-        ? new Monitor {
-          ShortName = config.Monitors.Left.ShortName,
-          Index = config.Monitors.Left.Index,
-          Config = config.Monitors.Left.Config
-        }
+      Left = IsValid(config.Monitors.Left)
+        ? CreateMonitor(config.Monitors.Left)
         : default;
-      Right = config.Monitors.Right.ShortName != "-"
-        ? new Monitor {
-          ShortName = config.Monitors.Right.ShortName,
-          Index = config.Monitors.Right.Index,
-          Config = config.Monitors.Right.Config
-        }
+      Right = IsValid(config.Monitors.Right)
+        ? CreateMonitor(config.Monitors.Right)
         : default;
-      Center = config.Monitors.Center.ShortName != "-"
-        ? new Monitor {
-          ShortName = config.Monitors.Center.ShortName,
-          Index = config.Monitors.Center.Index,
-          Config = config.Monitors.Center.Config
-        }
+      Top = IsValid(config.Monitors.Top)
+        ? CreateMonitor(config.Monitors.Top)
         : default;
     }
+
+    private Monitor CreateMonitor(MonitorConfig monitor) => new Monitor {
+      ShortName = monitor.ShortName,
+      Index = monitor.Index,
+      Config = monitor.Config
+    };
+
+    private Boolean IsValid(MonitorConfig monitor) => monitor.ShortName != "-" && monitor.Index != -1 && monitor.Config != "-";
   }
 }
