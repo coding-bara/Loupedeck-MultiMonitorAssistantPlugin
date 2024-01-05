@@ -30,6 +30,7 @@ namespace Loupedeck.MultiMonitorAssistantPlugin {
       var api = new ToolAPI(config.ExePath);
 
       ResourcesPath = resourcesPath;
+
       State = new State();
 
       MonitorsAvailable = new MonitorsAvailable(config);
