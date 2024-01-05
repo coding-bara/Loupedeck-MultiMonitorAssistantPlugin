@@ -34,13 +34,13 @@
 
       List<Monitor> disable = new List<Monitor>();
 
-      if (monitorsAvailable.Top == default)
+      if (monitorsAvailable.Top != default)
         disable.Add(monitorsAvailable.Top);
 
-      if (monitorsAvailable.Left == default)
+      if (monitorsAvailable.Left != default)
         disable.Add(monitorsAvailable.Left);
 
-      if (monitorsAvailable.Right == default)
+      if (monitorsAvailable.Right != default)
         disable.Add(monitorsAvailable.Right);
 
       return new Layout {
@@ -59,7 +59,7 @@
 
       List<Monitor> disable = new List<Monitor>();
 
-      if (monitorsAvailable.Top == default)
+      if (monitorsAvailable.Top != default)
         disable.Add(monitorsAvailable.Top);
 
       List<Monitor> enable = GetAllMonitors(monitorsAvailable);
@@ -80,10 +80,10 @@
 
       List<Monitor> disable = new List<Monitor>();
 
-      if (monitorsAvailable.Left == default)
+      if (monitorsAvailable.Left != default)
         disable.Add(monitorsAvailable.Left);
 
-      if (monitorsAvailable.Right == default)
+      if (monitorsAvailable.Right != default)
         disable.Add(monitorsAvailable.Right);
 
       List<Monitor> enable = GetAllMonitors(monitorsAvailable);
@@ -100,13 +100,13 @@
         monitorsAvailable.Center
       };
 
-      if (monitorsAvailable.Top == default)
+      if (monitorsAvailable.Top != default)
         enable.Add(monitorsAvailable.Top);
 
-      if (monitorsAvailable.Left == default)
+      if (monitorsAvailable.Left != default)
         enable.Add(monitorsAvailable.Left);
 
-      if (monitorsAvailable.Right == default)
+      if (monitorsAvailable.Right != default)
         enable.Add(monitorsAvailable.Right);
 
       return enable;
