@@ -1,10 +1,8 @@
 ﻿namespace Loupedeck.MultiMonitorAssistantPlugin {
-  using System;
-
   public abstract class BaseKnob : PluginDynamicAdjustment, IKnob {
-    protected BaseKnob(String actionGroup, String actionName, String actionDescription) : base(actionName, actionDescription, actionGroup, true) { }
+    protected BaseKnob(string actionGroup, string actionName, string actionDescription) : base(actionName, actionDescription, actionGroup, true) { }
 
-    protected override Boolean OnLoad() {
+    protected override bool OnLoad() {
       if (OnKnobSetup()) {
         UpdateKnob();
 
@@ -14,18 +12,18 @@
       return false;
     }
 
-    protected override Boolean OnUnload() {
+    protected override bool OnUnload() {
       OnKnobTeardown();
 
       return base.OnLoad();
     }
 
-    protected override void ApplyAdjustment(String _, Int32 steps) {
+    protected override void ApplyAdjustment(string _, int steps) {
       if (OnKnobTurn(steps))
         UpdateKnobValue();
     }
 
-    protected override void RunCommand(String _) {
+    protected override void RunCommand(string _) {
       if (OnKnobPress())
         UpdateKnobIcon();
     }
@@ -39,19 +37,19 @@
       UpdateKnobIcon();
     }
 
-    protected override String GetAdjustmentValue(String _) => GetKnobValue();
+    protected override string GetAdjustmentValue(string _) => GetKnobValue();
 
-    protected override BitmapImage GetAdjustmentImage(String _, PluginImageSize imageSize) => GetKnobIcon(imageSize);
+    protected override BitmapImage GetAdjustmentImage(string _, PluginImageSize imageSize) => GetKnobIcon(imageSize);
 
-    public virtual Boolean OnKnobPress() => false;
+    public virtual bool OnKnobPress() => false;
 
-    public virtual Boolean OnKnobTurn(Int32 steps) => false;
+    public virtual bool OnKnobTurn(int steps) => false;
 
-    public virtual String GetKnobValue() => default;
+    public virtual string GetKnobValue() => default;
 
     public virtual BitmapImage GetKnobIcon(PluginImageSize imageSize) => default;
 
-    public virtual Boolean OnKnobSetup() => true;
+    public virtual bool OnKnobSetup() => true;
 
     public virtual void OnKnobTeardown() { }
   }

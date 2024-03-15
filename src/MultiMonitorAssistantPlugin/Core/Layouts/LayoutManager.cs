@@ -1,8 +1,8 @@
-﻿namespace Loupedeck.MultiMonitorAssistantPlugin {
-  using System;
-  using System.Linq;
-  using System.Threading;
+﻿using System;
+using System.Linq;
+using System.Threading;
 
+namespace Loupedeck.MultiMonitorAssistantPlugin {
   public class LayoutManager {
     private readonly ToolAPI _api;
     private readonly State _state;
@@ -10,7 +10,7 @@
     private Thread _activationThread;
     private Thread _monitoringThread;
 
-    public delegate void ActivationProgressEvent(String layoutID, Int32 progress);
+    public delegate void ActivationProgressEvent(string layoutID, int progress);
     public event ActivationProgressEvent ActivationProgress;
 
     public LayoutManager(ToolAPI api, State state) {
@@ -44,12 +44,12 @@
         var actionsRequired = layout.Enable.Count + (layout.Disable?.Count ?? 0f);
         var actionsDone = 0f;
 
-        foreach (var monitor in layout.Enable.OrderBy(o => o.Index).ToList()) {
+        foreach (var monitor in layout.Enable.OrderBy(o => o.WindowsIndex).ToList()) {
           _api.SetMonitors(monitor.Config);
 
           actionsDone += 1;
 
-          ActivationProgress?.Invoke(layout.ID, (Int32) CalculateActivationProgress(actionsDone, actionsRequired));
+          ActivationProgress?.Invoke(layout.ID, (int) CalculateActivationProgress(actionsDone, actionsRequired));
           Thread.Sleep(2500);
         }
 
@@ -57,11 +57,11 @@
 
         if (layout.Disable != default)
           foreach (var monitor in layout.Disable) {
-            _api.Disable(monitor.ShortName);
+            _api.Disable(monitor.Name);
 
             actionsDone += 1;
 
-            ActivationProgress?.Invoke(layout.ID, (Int32) CalculateActivationProgress(actionsDone, actionsRequired));
+            ActivationProgress?.Invoke(layout.ID, (int) CalculateActivationProgress(actionsDone, actionsRequired));
             Thread.Sleep(250);
           }
 
@@ -77,6 +77,6 @@
       }
     };
 
-    private static Single CalculateActivationProgress(Single actionsDone, Single actionsRequired) => 80f * (actionsDone / actionsRequired);
+    private static float CalculateActivationProgress(float actionsDone, float actionsRequired) => 80f * (actionsDone / actionsRequired);
   }
 }

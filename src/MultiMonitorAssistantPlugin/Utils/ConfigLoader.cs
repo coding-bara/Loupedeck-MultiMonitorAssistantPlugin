@@ -1,43 +1,35 @@
-﻿namespace Loupedeck.MultiMonitorAssistantPlugin {
-  using System;
-  using System.IO;
+﻿using System.IO;
 
+namespace Loupedeck.MultiMonitorAssistantPlugin {
   public class ConfigLoader {
-    private readonly String _configPath;
-    private readonly String _resourcesPath;
+    private readonly string _configPath;
+    private readonly string _resourcesPath;
 
-    public ConfigLoader(String pluginPath, String resourcesPath) {
+    public ConfigLoader(string pluginPath, string resourcesPath) {
       _configPath = Path.Combine(pluginPath, "config.json");
       _resourcesPath = resourcesPath;
     }
 
-    public Config Load() {
-      return File.Exists(_configPath)
-        ? UseExistingConfig(_configPath)
-        : UseDefaultConfig(_configPath);
-    }
+    public Config Load() => File.Exists(_configPath)
+      ? UseExistingConfig(_configPath)
+      : UseDefaultConfig(_configPath);
 
-    private Config UseDefaultConfig(String configPath) {
+    private Config UseDefaultConfig(string configPath) {
       var defaultConfig = new Config {
         Monitors = new MonitorsConfig {
-          Top = new MonitorConfig {
-            ShortName = "-",
-            Index = -1,
-            Config = "-"
-          },
           Left = new MonitorConfig {
-            ShortName = "-",
-            Index = -1,
+            WindowsIndex = -1,
+            Name = "-",
             Config = "-"
           },
           Right = new MonitorConfig {
-            ShortName = "-",
-            Index = -1,
+            WindowsIndex = -1,
+            Name = "-",
             Config = "-"
           },
           Center = new MonitorConfig {
-            ShortName = "-",
-            Index = -1,
+            WindowsIndex = -1,
+            Name = "-",
             Config = "-"
           }
         }
@@ -53,7 +45,7 @@
       return defaultConfig;
     }
 
-    private Config UseExistingConfig(String configPath) {
+    private Config UseExistingConfig(string configPath) {
       var existingConfig = JsonHelpers.DeserializeAnyObjectFromFile<Config>(configPath);
 
       EnrichConfigWithDefaults(existingConfig);

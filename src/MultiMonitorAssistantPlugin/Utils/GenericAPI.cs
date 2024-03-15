@@ -1,17 +1,17 @@
-﻿namespace Loupedeck.MultiMonitorAssistantPlugin {
-  using System;
-  using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
+namespace Loupedeck.MultiMonitorAssistantPlugin {
   public class GenericAPI {
-    private readonly String _exePath;
+    private readonly string _exePath;
 
-    protected GenericAPI(String exePath) {
+    protected GenericAPI(string exePath) {
       _exePath = exePath;
     }
 
-    protected delegate T ParseRawOutputCallback<T>(String[] rawOutput);
+    protected delegate T ParseRawOutputCallback<T>(string[] rawOutput);
 
-    protected T RunCommand<T>(String command, ParseRawOutputCallback<T> parseRawOutputCallback) {
+    protected T RunCommand<T>(string command, ParseRawOutputCallback<T> parseRawOutputCallback) {
       T parsedOutput = default;
 
       try {
@@ -46,7 +46,7 @@
       return parsedOutput;
     }
 
-    protected void RunCommand(String command) {
+    protected void RunCommand(string command) {
       try {
         var process = new Process {
           StartInfo = new ProcessStartInfo(_exePath, command) {

@@ -1,9 +1,8 @@
-﻿namespace Loupedeck.MultiMonitorAssistantPlugin {
-  using System;
-  using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace Loupedeck.MultiMonitorAssistantPlugin {
   public class Layout {
-    public String ID { get; set; }
+    public string ID { get; set; }
     public List<Monitor> Enable { get; set; }
     public List<Monitor> Disable { get; set; }
   }

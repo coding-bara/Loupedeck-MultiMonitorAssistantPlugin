@@ -66,12 +66,9 @@
         <Compile Include="Actions\Layouts\AActivateLayoutButton.cs"/>
         <Compile Include="Actions\Layouts\ActivateLayoutButtonCenterOnly.cs"/>
         <Compile Include="Actions\Layouts\ActivateLayoutButtonDefault.cs"/>
-        <Compile Include="Actions\Layouts\ActivateLayoutButtonHorizontal.cs"/>
-        <Compile Include="Actions\Layouts\ActivateLayoutButtonVertical.cs"/>
         <Compile Include="Actions\Monitors\ASleepMonitorButton.cs"/>
         <Compile Include="Actions\Monitors\SleepMonitorButtonLeft.cs"/>
         <Compile Include="Actions\Monitors\SleepMonitorButtonRight.cs"/>
-        <Compile Include="Actions\Monitors\SleepMonitorButtonTop.cs"/>
         <Compile Include="Core\Layouts\Layout.cs"/>
         <Compile Include="Core\Layouts\LayoutManager.cs"/>
         <Compile Include="Core\Layouts\LayoutsAvailable.cs"/>
@@ -122,12 +119,6 @@
         <EmbeddedResource Include="Resources\Icons\Size80x80\Layouts\Default.png">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </EmbeddedResource>
-        <EmbeddedResource Include="Resources\Icons\Size80x80\Layouts\Horizontal.png">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </EmbeddedResource>
-        <EmbeddedResource Include="Resources\Icons\Size80x80\Layouts\Vertical.png">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </EmbeddedResource>
         <EmbeddedResource Include="Resources\Icons\Size80x80\Monitors\Busy.png">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </EmbeddedResource>
@@ -135,9 +126,6 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </EmbeddedResource>
         <EmbeddedResource Include="Resources\Icons\Size80x80\Monitors\Right.png">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </EmbeddedResource>
-        <EmbeddedResource Include="Resources\Icons\Size80x80\Monitors\Top.png">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </EmbeddedResource>
     </ItemGroup>

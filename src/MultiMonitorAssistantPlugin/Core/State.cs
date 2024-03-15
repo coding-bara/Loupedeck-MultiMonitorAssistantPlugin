@@ -1,13 +1,11 @@
 ﻿namespace Loupedeck.MultiMonitorAssistantPlugin {
-  using System;
-
   public class State {
     public delegate void IsBusyChangedEvent();
     public event IsBusyChangedEvent IsBusyChanged;
 
-    private Boolean _isBusy;
+    private bool _isBusy;
 
-    public Boolean IsBusy {
+    public bool IsBusy {
       get => _isBusy;
       set {
         if (value != _isBusy) {

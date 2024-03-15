@@ -1,6 +1,4 @@
 ﻿namespace Loupedeck.MultiMonitorAssistantPlugin {
-  using System;
-
   public class ActivateLayoutButtonCenterOnly : AActivateLayoutButton {
     public ActivateLayoutButtonCenterOnly() : base(
       "Activate Layout",
@@ -9,6 +7,6 @@
     ) { }
 
     protected override Layout Layout => MultiMonitorAssistant.LayoutsAvailable.CenterOnly;
-    protected override String Icon => "CenterOnly.png";
+    protected override string Icon => "CenterOnly.png";
   }
 }

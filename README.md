@@ -32,33 +32,28 @@ If you need the x32 version, you can download it [here](https://www.nirsoft.net/
     {
       "monitors": {
         "left": {
-          "index": 1, // Use the value which is display on the monitor from "system" > "display".
+          "windowsIndex": 1, // Use the value which is displayed on the monitor from "system" > "display".
           // In order to get the next two values, you need to run the MultiMonitorTool.exe once by yourself.
           // Therefore, run this in your explorer "%localappdata%\Loupedeck\Plugins\MultiMonitorAssistant\win\Resources\MultiMonitorTool\MultiMonitorTool.exe".
-          // You can now see your monitors in a list.
-          // Use the value from the "Short Monitor ID" column which matches your monitor (e.g. if index is 1 then use "\\.\DISPLAY1" which results in "BNQ7F6E" in my case).
-          "shortName": "BNQ7F6E",
-          // To get the "config" value, first enable usage of the Short Monitor ID.
-          // To do this, click "Options" > "Copy /SetMonitors Command Mode" > "Use Short Monitor ID as Name".
+          // You can now see your monitors listed.
+          // Use the value from the "Name" column which matches your monitor (e.g. "\\.\DISPLAY2").
+          "name": "\\\\.\\DISPLAY2",
+          // To get the "config" value, first enable usage of "Use \\.\DISPLAYx as Name".
+          // To do this, click "Options" > "Copy /SetMonitors Command Mode" > "Use \\.\DISPLAYx as Name".
           // Now select all monitors in your list and click "Edit" > "Copy /SetMonitors Command".
           // The config is now copied into your clipboard, paste it somewhere.
-          // Take the part, according to your monitor shortName (e.g. if shortName is BNQ7F6E then use "Name=BNQ7F6E ..." as in my case).
-          "config": "Name=BNQ7F6E BitsPerPixel=32 Width=1920 Height=1080 DisplayFrequency=144 PositionX=-1080 PositionY=80"
-        },
-        "top": {
-          "index": 2, // Use the value which is display on the monitor from "system" > "display".
-          "shortName": "BNQ7F58", // Likewise as described above.
-          "config": "Name=BNQ7F58 BitsPerPixel=32 Width=1920 Height=1080 DisplayFrequency=120 PositionX=320 PositionY=-1080" // Likewise as described above.
+          // Take the part, according to your monitor name (e.g. if name is \\.\DISPLAY1 then use "Name=\\.\DISPLAY1 ...").
+          "config": "Name=\\\\.\\DISPLAY2 BitsPerPixel=32 Width=2560 Height=1440 DisplayFrequency=240 PositionX=-2560 PositionY=0"
         },
         "center": {
-          "index": 3, // Use the value which is display on the monitor from "system" > "display".
-          "shortName": "GSM7797", // Likewise as described above.
-          "config": "Name=GSM7797 BitsPerPixel=32 Width=2560 Height=1440 DisplayFrequency=240 PositionX=0 PositionY=0 Primary=1" // Likewise as described above.
+          "windowsIndex": 3, // Use the value which is display on the monitor from "system" > "display".
+          "name": "\\\\.\\DISPLAY1", // Likewise as described above.
+          "config": "Name=\\\\.\\DISPLAY1 BitsPerPixel=32 Width=2560 Height=1440 DisplayFrequency=240 PositionX=0 PositionY=0 Primary=1" // Likewise as described above.
         },
         "right": {
-          "index": 4, // Use the value which is display on the monitor from "system" > "display".
-          "shortName": "BNQ7F6F", // Likewise as described above.
-          "config": "Name=BNQ7F6F BitsPerPixel=32 Width=1920 Height=1080 DisplayFrequency=120 PositionX=2560 PositionY=80" // Likewise as described above.
+          "windowsIndex": 2, // Use the value which is display on the monitor from "system" > "display".
+          "name": "\\\\.\\DISPLAY3", // Likewise as described above.
+          "config": "Name=\\\\.\\DISPLAY3 BitsPerPixel=32 Width=2560 Height=1440 DisplayFrequency=240 PositionX=2560 PositionY=0" // Likewise as described above.
         },
       },
       // Only needs to be specified if you need the x32 version of MultiMonitorTool.
@@ -71,24 +66,19 @@ If you need the x32 version, you can download it [here](https://www.nirsoft.net/
     {
       "monitors": {
         "left": {
-          "index": 1,
-          "shortName": "BNQ7F6E",
-          "config": "Name=BNQ7F6E BitsPerPixel=32 Width=1920 Height=1080 DisplayFrequency=144 PositionX=-1080 PositionY=80"
-        },
-        "top": {
-          "index": 2,
-          "shortName": "BNQ7F58",
-          "config": "Name=BNQ7F58 BitsPerPixel=32 Width=1920 Height=1080 DisplayFrequency=120 PositionX=320 PositionY=-1080"
+          "windowsIndex": 1,
+          "name": "\\\\.\\DISPLAY2",
+          "config": "Name=\\\\.\\DISPLAY2 BitsPerPixel=32 Width=2560 Height=1440 DisplayFrequency=240 PositionX=-2560 PositionY=0"
         },
         "center": {
-          "index": 3,
-          "shortName": "GSM7797",
-          "config": "Name=GSM7797 BitsPerPixel=32 Width=2560 Height=1440 DisplayFrequency=240 PositionX=0 PositionY=0 Primary=1"
+          "windowsIndex": 3,
+          "name": "\\\\.\\DISPLAY1",
+          "config": "Name=\\\\.\\DISPLAY1 BitsPerPixel=32 Width=2560 Height=1440 DisplayFrequency=240 PositionX=0 PositionY=0 Primary=1"
         },
         "right": {
-          "index": 4,
-          "shortName": "BNQ7F6F",
-          "config": "Name=BNQ7F6F BitsPerPixel=32 Width=1920 Height=1080 DisplayFrequency=120 PositionX=2560 PositionY=80"
+          "windowsIndex": 2,
+          "name": "\\\\.\\DISPLAY3",
+          "config": "Name=\\\\.\\DISPLAY3 BitsPerPixel=32 Width=2560 Height=1440 DisplayFrequency=240 PositionX=2560 PositionY=0"
         }
       }
     }

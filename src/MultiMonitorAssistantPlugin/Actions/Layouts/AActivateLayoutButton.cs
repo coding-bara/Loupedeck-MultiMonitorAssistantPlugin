@@ -1,16 +1,15 @@
-﻿namespace Loupedeck.MultiMonitorAssistantPlugin {
-  using System;
-  using System.IO;
+﻿using System.IO;
 
+namespace Loupedeck.MultiMonitorAssistantPlugin {
   public abstract class AActivateLayoutButton : BaseButton {
-    protected AActivateLayoutButton(String actionGroup, String actionName, String actionDescription) : base(actionGroup, actionName, actionDescription) { }
+    protected AActivateLayoutButton(string actionGroup, string actionName, string actionDescription) : base(actionGroup, actionName, actionDescription) { }
 
     protected abstract Layout Layout { get; }
-    protected abstract String Icon { get; }
+    protected abstract string Icon { get; }
 
-    private Int32 Progress { get; set; } = -1;
+    private int Progress { get; set; } = -1;
 
-    public override Boolean OnButtonSetup() {
+    public override bool OnButtonSetup() {
       if (Layout != default) {
         MultiMonitorAssistant.State.IsBusyChanged += UpdateButtonIcon;
         MultiMonitorAssistant.LayoutManager.ActivationProgress += LayoutManagerOnActivationProgress;
@@ -25,14 +24,14 @@
       MultiMonitorAssistant.LayoutManager.ActivationProgress -= LayoutManagerOnActivationProgress;
     }
 
-    private void LayoutManagerOnActivationProgress(String layoutID, Int32 progress) {
+    private void LayoutManagerOnActivationProgress(string layoutID, int progress) {
       if (layoutID == Layout.ID)
         Progress = progress;
 
       UpdateButtonIcon();
     }
 
-    public override Boolean OnButtonPress() {
+    public override bool OnButtonPress() {
       if (MultiMonitorAssistant.State.IsBusy)
         return false;
 

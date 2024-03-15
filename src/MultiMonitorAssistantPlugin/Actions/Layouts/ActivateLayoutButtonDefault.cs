@@ -1,6 +1,4 @@
 ﻿namespace Loupedeck.MultiMonitorAssistantPlugin {
-  using System;
-
   public class ActivateLayoutButtonDefault : AActivateLayoutButton {
     public ActivateLayoutButtonDefault() : base(
       "Activate Layout",
@@ -9,6 +7,6 @@
     ) { }
 
     protected override Layout Layout => MultiMonitorAssistant.LayoutsAvailable.Default;
-    protected override String Icon => "Default.png";
+    protected override string Icon => "Default.png";
   }
 }

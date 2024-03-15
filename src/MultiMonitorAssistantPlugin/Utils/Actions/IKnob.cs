@@ -1,16 +1,14 @@
 ﻿namespace Loupedeck.MultiMonitorAssistantPlugin {
-  using System;
-
   public interface IKnob {
-    Boolean OnKnobSetup();
+    bool OnKnobSetup();
 
     void OnKnobTeardown();
 
-    Boolean OnKnobPress();
+    bool OnKnobPress();
 
-    Boolean OnKnobTurn(Int32 steps);
+    bool OnKnobTurn(int steps);
 
-    String GetKnobValue();
+    string GetKnobValue();
 
     BitmapImage GetKnobIcon(PluginImageSize imageSize);
 

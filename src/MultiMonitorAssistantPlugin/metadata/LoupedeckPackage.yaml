@@ -15,7 +15,7 @@ displayName: Multi Monitor Assistant
 pluginFileName: MultiMonitorAssistantPlugin.dll
 
 # Plugin version.
-version: 2024.01.1
+version: 2024.03.1
 
 # Author of the plugin. The author can be a company or an individual developer.
 author: Max Rost

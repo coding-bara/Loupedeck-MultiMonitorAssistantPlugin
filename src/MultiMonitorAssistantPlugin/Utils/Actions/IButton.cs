@@ -1,14 +1,12 @@
 ﻿namespace Loupedeck.MultiMonitorAssistantPlugin {
-  using System;
-
   public interface IButton {
-    Boolean OnButtonPress();
+    bool OnButtonPress();
 
-    String GetButtonValue();
+    string GetButtonValue();
 
     BitmapImage GetButtonIcon(PluginImageSize imageSize);
 
-    Boolean OnButtonSetup();
+    bool OnButtonSetup();
 
     void OnButtonTeardown();
 

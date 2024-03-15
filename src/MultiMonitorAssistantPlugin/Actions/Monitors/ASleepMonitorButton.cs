@@ -1,14 +1,13 @@
-﻿namespace Loupedeck.MultiMonitorAssistantPlugin.Displays {
-  using System;
-  using System.IO;
+﻿using System.IO;
 
+namespace Loupedeck.MultiMonitorAssistantPlugin.Displays {
   public abstract class ASleepMonitorButton : BaseButton {
-    protected ASleepMonitorButton(String actionGroup, String actionName, String actionDescription) : base(actionGroup, actionName, actionDescription) { }
+    protected ASleepMonitorButton(string actionGroup, string actionName, string actionDescription) : base(actionGroup, actionName, actionDescription) { }
 
     protected abstract Monitor Monitor { get; }
-    protected abstract String Icon { get; }
+    protected abstract string Icon { get; }
 
-    public override Boolean OnButtonSetup() {
+    public override bool OnButtonSetup() {
       if (Monitor != default) {
         MultiMonitorAssistant.State.IsBusyChanged += UpdateButtonIcon;
         return true;
@@ -19,7 +18,7 @@
 
     public override void OnButtonTeardown() => MultiMonitorAssistant.State.IsBusyChanged -= UpdateButtonIcon;
 
-    public override Boolean OnButtonPress() {
+    public override bool OnButtonPress() {
       if (MultiMonitorAssistant.State.IsBusy)
         return false;
 

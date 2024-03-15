@@ -1,11 +1,10 @@
-﻿namespace Loupedeck.MultiMonitorAssistantPlugin {
-  using System;
-  using System.IO;
+﻿using System.IO;
 
+namespace Loupedeck.MultiMonitorAssistantPlugin {
   public abstract class BaseButton : PluginDynamicCommand, IButton {
-    protected BaseButton(String actionGroup, String actionName, String actionDescription) : base(actionName, actionDescription, actionGroup) { }
+    protected BaseButton(string actionGroup, string actionName, string actionDescription) : base(actionName, actionDescription, actionGroup) { }
 
-    protected override Boolean OnLoad() {
+    protected override bool OnLoad() {
       if (OnButtonSetup()) {
         UpdateButtonIcon();
 
@@ -15,13 +14,13 @@
       return false;
     }
 
-    protected override Boolean OnUnload() {
+    protected override bool OnUnload() {
       OnButtonTeardown();
 
       return base.OnLoad();
     }
 
-    protected override void RunCommand(String _) {
+    protected override void RunCommand(string _) {
       if (OnButtonPress())
         UpdateButtonIcon();
     }
@@ -30,20 +29,20 @@
 
     public void UpdateButton() => UpdateButtonIcon();
 
-    protected override BitmapImage GetCommandImage(String _, PluginImageSize imageSize) => GetButtonIcon(imageSize);
+    protected override BitmapImage GetCommandImage(string _, PluginImageSize imageSize) => GetButtonIcon(imageSize);
 
-    protected override String GetCommandDisplayName(String _, PluginImageSize __) => GetButtonValue();
+    protected override string GetCommandDisplayName(string _, PluginImageSize __) => GetButtonValue();
 
-    public virtual Boolean OnButtonPress() => false;
+    public virtual bool OnButtonPress() => false;
 
-    public virtual String GetButtonValue() => default;
+    public virtual string GetButtonValue() => default;
 
     public virtual BitmapImage GetButtonIcon(PluginImageSize imageSize) => default;
 
-    public virtual Boolean OnButtonSetup() => true;
+    public virtual bool OnButtonSetup() => true;
 
     public virtual void OnButtonTeardown() { }
 
-    protected String GetIconBasePath(Int32 size) => Path.Combine(MultiMonitorAssistant.ResourcesPath, "Icons", $"Size{size}x{size}");
+    protected string GetIconBasePath(int size) => Path.Combine(MultiMonitorAssistant.ResourcesPath, "Icons", $"Size{size}x{size}");
   }
 }

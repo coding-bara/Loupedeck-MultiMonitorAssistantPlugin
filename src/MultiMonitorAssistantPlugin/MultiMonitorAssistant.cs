@@ -1,12 +1,12 @@
+using System;
+using System.IO;
+
 namespace Loupedeck.MultiMonitorAssistantPlugin {
-  using System;
-  using System.IO;
-
   public class MultiMonitorAssistant : Plugin {
-    public override Boolean UsesApplicationApiOnly => true;
-    public override Boolean HasNoApplication => true;
+    public override bool UsesApplicationApiOnly => true;
+    public override bool HasNoApplication => true;
 
-    public static String ResourcesPath;
+    public static string ResourcesPath;
 
     public static State State;
 

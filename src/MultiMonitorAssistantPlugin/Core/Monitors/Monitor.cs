@@ -1,9 +1,8 @@
 ﻿namespace Loupedeck.MultiMonitorAssistantPlugin {
-  using System;
-
   public class Monitor {
-    public String ShortName { get; set; }
-    public Int32 Index { get; set; }
-    public String Config { get; set; }
+    public string Id { get; set; }
+    public int WindowsIndex { get; set; }
+    public string Name { get; set; }
+    public string Config { get; set; }
   }
 }

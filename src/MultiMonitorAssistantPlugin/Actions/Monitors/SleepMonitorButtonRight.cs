@@ -1,6 +1,4 @@
 ﻿namespace Loupedeck.MultiMonitorAssistantPlugin.Displays {
-  using System;
-
   public class SleepMonitorButtonRight : ASleepMonitorButton {
     public SleepMonitorButtonRight() : base(
       "Sleep Monitor",
@@ -9,6 +7,6 @@
     ) { }
 
     protected override Monitor Monitor => MultiMonitorAssistant.MonitorsAvailable.Right;
-    protected override String Icon => "Right.png";
+    protected override string Icon => "Right.png";
   }
 }

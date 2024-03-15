@@ -1,7 +1,7 @@
-﻿namespace Loupedeck.MultiMonitorAssistantPlugin {
-  using System;
-  using System.Threading;
+﻿using System;
+using System.Threading;
 
+namespace Loupedeck.MultiMonitorAssistantPlugin {
   public class MonitorManager {
     private readonly ToolAPI _api;
     private readonly State _state;
@@ -36,7 +36,7 @@
       try {
         Thread.Sleep(1000);
 
-        _api.Disable(monitor.ShortName);
+        _api.Disable(monitor.Name);
 
         Thread.Sleep(1000);
       } catch (Exception e) {
